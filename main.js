@@ -106,15 +106,15 @@ function fetchWeatherData(location) {
     });
 }
 
-// obtiene datos meteorolicos sobre la ubicacion predeterminada (Argentina)
+// obtiene datos meteorolicos sobre la ubicacion predeterminada (San Luis)
 // dom documents
 document.addEventListener('DOMContentLoaded', () => {
-    const defaultLocation = 'Argentina';
+    const defaultLocation = 'San Luis';
     fetchWeatherData(defaultLocation);
 });
 
 locButton.addEventListener('click', () => {
-    const location = prompt('Busca tu ubicacion :');
+    const location = prompt('Busca tu CAPITAL :');
     if (!location) return;
 
     fetchWeatherData(location);
