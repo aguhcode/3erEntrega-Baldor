@@ -28,7 +28,7 @@ const weatherIconMap = {
 function fetchWeatherData(location) {
     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`;
 
-    // Fetch weather data desde api
+    // Fetch clima info desde api
     fetch(apiUrl).then(response => response.json()).then(data => {
         // actualiza info del hoy 
         const todayWeather = data.list[0].weather[0].description;
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 locButton.addEventListener('click', () => {
-    const location = prompt('Busca tu CAPITAL :');
+    const location = prompt('Busca tu ciudad :');
     if (!location) return;
 
     fetchWeatherData(location);
