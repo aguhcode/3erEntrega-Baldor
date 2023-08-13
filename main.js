@@ -4,7 +4,7 @@ const todayInfo = document.querySelector('.today-info');
 const todayWeatherIcon = document.querySelector('.today-weather i');
 const todayTemp = document.querySelector('.weather-temp');
 const daysList = document.querySelector('.days-list');    
-// Mapping of weather condition codes to icon class names (Depending on Openweather Api Response)
+// asignación de códigos de condiciones meteorológicas a nombres de clases de iconos (según la respuesta de Openweather Api)
 const weatherIconMap = {
     '01d': 'sun',
     '01n': 'moon',
@@ -26,12 +26,11 @@ const weatherIconMap = {
     '50n': 'water'
 };
 function fetchWeatherData(location) {
-    // Construct the API url with the location and api key
     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`;
 
-    // Fetch weather data from api
+    // Fetch weather data desde api
     fetch(apiUrl).then(response => response.json()).then(data => {
-        // Update todays info
+        // actualiza info del hoy 
         const todayWeather = data.list[0].weather[0].description;
         const todayTemperature = `${Math.round(data.list[0].main.temp)}°C`;
         const todayWeatherIconCode = data.list[0].weather[0].icon;
@@ -41,14 +40,14 @@ function fetchWeatherData(location) {
         todayWeatherIcon.className = `bx bx-${weatherIconMap[todayWeatherIconCode]}`;
         todayTemp.textContent = todayTemperature;
 
-        // Update location and weather description in the "left-info" section
+        //actualiza localizacion y descripcion del clima
         const locationElement = document.querySelector('.today-info > div > span');
         locationElement.textContent = `${data.city.name}, ${data.city.country}`;
 
         const weatherDescriptionElement = document.querySelector('.today-weather > h3');
         weatherDescriptionElement.textContent = todayWeather;
 
-        // Update todays info in the "day-info" section
+        //actualiza info de hoy
         const todayPrecipitation = `${data.list[0].pop}%`;
         const todayHumidity = `${data.list[0].main.humidity}%`;
         const todayWindSpeed = `${data.list[0].wind.speed} km/h`;
@@ -71,7 +70,7 @@ function fetchWeatherData(location) {
 
         `;
 
-        // Update next 4 days weather
+        // actualiza la info de los dias siguientes (4)
         const today = new Date();
         const nextDaysData = data.list.slice(1);
 
@@ -99,7 +98,7 @@ function fetchWeatherData(location) {
                 count++;
             }
 
-            // Stop after getting 4 distinct days
+            // break despues de 4 intentos
             if (count === 4) break;
         }
     }).catch(error => {
@@ -107,7 +106,8 @@ function fetchWeatherData(location) {
     });
 }
 
-// Fetch weather data on document load for default location (Germany)
+// obtiene datos meteorolicos sobre la ubicacion predeterminada (Argentina)
+// dom documents
 document.addEventListener('DOMContentLoaded', () => {
     const defaultLocation = 'Argentina';
     fetchWeatherData(defaultLocation);
