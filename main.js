@@ -94,7 +94,7 @@ function fetchWeatherData(location) {
             const dayTemp = `${Math.round(dayData.main.temp)}°C`;
             const iconCode = dayData.weather[0].icon;
 
-            // Ensure the day isn't duplicate and today
+            
             if (!uniqueDays.has(dayAbbreviation) && forecastDate.getDate() !== today.getDate()) {
                 uniqueDays.add(dayAbbreviation);
                 daysList.innerHTML += `
