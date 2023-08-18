@@ -113,7 +113,7 @@ function fetchWeatherData(location) {
             if (count === 4) break;
         }
     }).catch(error => {
-        alert(`Error fetching weather data: ${error} (Api Error)`);
+        alert(`algo salio mal caritatriste`);
     });
 }
 
@@ -124,8 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchWeatherData(defaultLocation);
 });
 
-locButton.addEventListener('click', () => {
-    const location = prompt('Busca tu ciudad :');
+const searchButton = document.getElementById('search-button');
+const locationInput = document.getElementById('location-input');
+
+searchButton.addEventListener('click', () => {
+    const location = locationInput.value;
     if (!location) return;
 
     fetchWeatherData(location);

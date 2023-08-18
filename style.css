@@ -16,18 +16,18 @@ body {
 }
 
 .container {
-    height: auto; /* Ajuste de altura automática */
+    height: auto;
     background-color: #232931;
     color: #fff;
     border-radius: 25px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    padding: 15px; /* Espaciado interno */
+    padding: 15px; 
 }
 
 .left-info {
-    width: 100%; /* Ajuste de ancho */
-    display: block; /* Cambio a bloque para ajustar al ancho */
-    background: url("/img/1.jpg"); /* Corrección de la ruta de la imagen */
+    width: 100%; 
+    display: block; 
+    background: url("/img/1.jpg"); 
     background-position: center;
     background-size: cover;
     cursor: pointer;
@@ -49,53 +49,53 @@ body {
 }
 
 .today-info {
-    position: relative; /* Cambio a relativo */
-    margin-top: 15px; /* Espaciado superior */
-    text-align: center; /* Centrado de texto */
+    position: relative; 
+    margin-top: 15px; 
+    text-align: center; 
 }
 
 .today-weather {
-    position: relative; /* Cambio a relativo */
+    position: relative; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrado de elementos */
-    text-align: center; /* Centrado de texto */
-    margin-top: 15px; /* Espaciado superior */
-    padding-bottom: 15px; /* Espaciado inferior */
+    align-items: center; 
+    text-align: center; 
+    margin-top: 15px; 
+    padding-bottom: 15px; 
 }
 
 .today-weather .bx {
-    font-size: 3rem; /* Tamaño de fuente reducido */
+    font-size: 3rem; 
 }
 
 .weather-temp {
     font-weight: 700;
-    font-size: 2rem; /* Tamaño de fuente reducido */
+    font-size: 2rem; 
 }
 
 .right-info {
     position: relative;
     height: 100%;
-    padding-top: 15px; /* Espaciado superior */
+    padding-top: 15px; 
 }
 
 .day-info {
-    padding: 15px; /* Espaciado interno */
+    padding: 15px; 
     display: flex;
     flex-direction: column;
 }
 
 .days-list {
     display: flex;
-    flex-wrap: wrap; /* Ajuste para envolver en dispositivos más pequeños */
+    flex-wrap: wrap; 
     list-style: none;
-    margin: 10px -5px; /* Espaciado negativo para contrarrestar el margen de los elementos */
-    padding: 0; /* Eliminación del relleno predeterminado */
+    margin: 10px -5px; 
+    padding: 0; 
 }
 
 .days-list li {
     padding: 10px;
-    margin: 5px; /* Espaciado entre elementos */
+    margin: 5px; 
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -109,21 +109,21 @@ body {
 }
 
 .days-list li .bx {
-    margin-bottom: 3px; /* Espaciado inferior reducido */
-    font-size: 1.5rem; /* Tamaño de fuente reducido */
+    margin-bottom: 3px; 
+    font-size: 1.5rem; 
 }
 
 .btn-container {
-    padding: 15px; /* Espaciado interno */
+    padding: 15px;
 }
 
-.loc-button {
+.location-input {
     outline: none;
     width: 100%;
     border: none;
     font-weight: 700;
     border-radius: 25px;
-    padding: 8px; /* Tamaño reducido del relleno */
+    padding: 8px; 
     background: #303f9f;
     color: #fff;
     cursor: pointer;
