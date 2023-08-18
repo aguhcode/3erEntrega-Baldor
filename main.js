@@ -69,6 +69,17 @@ function fetchWeatherData(location) {
             </div>
 
         `;
+        const locationForm = document.getElementById('location-form');
+        const locationInput = document.getElementById('location-input');
+
+        locationForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const location = locationInput.value;
+                    if (location) {
+        localStorage.setItem('lastLocation', location);
+        fetchWeatherData(location);
+    }
+});
 
         // actualiza la info de los dias siguientes (4)
         const today = new Date();
@@ -119,3 +130,4 @@ locButton.addEventListener('click', () => {
 
     fetchWeatherData(location);
 });
+
