@@ -27,7 +27,7 @@ body {
 .left-info {
     width: 100%; 
     display: block; 
-    background: url("/img/2.jgp"); 
+    background: url("/img/2.jpg"); 
     background-position: center;
     background-size: cover;
     cursor: pointer;

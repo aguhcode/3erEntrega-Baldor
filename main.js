@@ -71,15 +71,16 @@ function fetchWeatherData(location) {
         `;
         const locationForm = document.getElementById('location-form');
         const locationInput = document.getElementById('location-input');
-
+        
         locationForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const location = locationInput.value;
-                    if (location) {
-        localStorage.setItem('lastLocation', location);
-        fetchWeatherData(location);
-    }
-});
+            if (location) {
+                localStorage.setItem('lastLocation', location);
+                fetchWeatherData(location);
+            }
+        });
+        
 
         // actualiza la info de los dias siguientes (4)
         const today = new Date();
@@ -93,29 +94,31 @@ function fetchWeatherData(location) {
             const dayAbbreviation = forecastDate.toLocaleDateString('ES', { weekday: 'short' });
             const dayTemp = `${Math.round(dayData.main.temp)}°C`;
             const iconCode = dayData.weather[0].icon;
-
-            
+        
             if (!uniqueDays.has(dayAbbreviation) && forecastDate.getDate() !== today.getDate()) {
                 uniqueDays.add(dayAbbreviation);
                 daysList.innerHTML += `
-                
                     <li>
                         <i class='bx bx-${weatherIconMap[iconCode]}'></i>
                         <span>${dayAbbreviation}</span>
                         <span class="day-temp">${dayTemp}</span>
                     </li>
-
                 `;
                 count++;
             }
-
-            // break despues de 4 intentos
+        
+            // break después de 4 intentos
             if (count === 4) break;
         }
-    }).catch(error => {
-        alert(`algo salio mal caritatriste`);
-    });
-}
+        
+
+        }).catch(error => {
+            const errorMensaje = document.createElement("div");
+            errorMensaje.textContent = "Algo salio mal";
+            errorMensaje.style.color = "red";
+            document.body.appendChild(errorMensaje);
+        });
+        
 
 // obtiene datos meteorolicos sobre la ubicacion predeterminada (San Luis)
 // dom documents
@@ -133,4 +136,4 @@ searchButton.addEventListener('click', () => {
 
     fetchWeatherData(location);
 });
-
+}
