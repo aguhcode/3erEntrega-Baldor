@@ -111,6 +111,7 @@ function fetchWeatherData(location) {
         errorMensaje.textContent = "Ingrese un nombre de ciudad correcto por favor";
         errorMensaje.style.color = "white";
         document.body.appendChild(errorMensaje);
+        
     });
 }
 
