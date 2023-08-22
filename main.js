@@ -69,12 +69,14 @@ function fetchWeatherData(location) {
         const locationInput = document.getElementById('location-input');
         
         locationForm.addEventListener('submit', (event) => {
-            event.preventDefault(); 
+            event.preventDefault();
             const location = locationInput.value;
             if (location) {
+                localStorage.setItem('lastLocation', location); 
                 fetchWeatherData(location);
             }
         });
+        
         
         const today = new Date();
         const nextDaysData = data.list.slice(1);
@@ -111,12 +113,16 @@ function fetchWeatherData(location) {
         errorMensaje.textContent = "Ingrese un nombre de ciudad correcto por favor";
         errorMensaje.style.color = "white";
         document.body.appendChild(errorMensaje);
-        
+    
+        setTimeout(() => {
+            errorMensaje.remove();
+        }, 3000); 
     });
+    
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const defaultLocation = 'Argentina';
+    const defaultLocation = 'San Luis';
     fetchWeatherData(defaultLocation);
 });
 
