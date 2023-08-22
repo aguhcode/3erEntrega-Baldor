@@ -4,7 +4,6 @@ const todayInfo = document.querySelector('.today-info');
 const todayWeatherIcon = document.querySelector('.today-weather i');
 const todayTemp = document.querySelector('.weather-temp');
 const daysList = document.querySelector('.days-list');    
-// asignación de códigos de condiciones meteorológicas a nombres de clases de iconos (según la respuesta de Openweather Api)
 const weatherIconMap = {
     '01d': 'sun',
     '01n': 'moon',
@@ -28,9 +27,7 @@ const weatherIconMap = {
 function fetchWeatherData(location) {
     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`;
 
-    // Fetch clima info desde api
     fetch(apiUrl).then(response => response.json()).then(data => {
-        // actualiza info del hoy 
         const todayWeather = data.list[0].weather[0].description;
         const todayTemperature = `${Math.round(data.list[0].main.temp)}°C`;
         const todayWeatherIconCode = data.list[0].weather[0].icon;
@@ -40,14 +37,13 @@ function fetchWeatherData(location) {
         todayWeatherIcon.className = `bx bx-${weatherIconMap[todayWeatherIconCode]}`;
         todayTemp.textContent = todayTemperature;
 
-        //actualiza localizacion y descripcion del clima
+
         const locationElement = document.querySelector('.today-info > div > span');
         locationElement.textContent = `${data.city.name}, ${data.city.country}`;
 
         const weatherDescriptionElement = document.querySelector('.today-weather > h3');
         weatherDescriptionElement.textContent = todayWeather;
 
-        //actualiza info de hoy
         const todayPrecipitation = `${data.list[0].pop}%`;
         const todayHumidity = `${data.list[0].main.humidity}%`;
         const todayWindSpeed = `${data.list[0].wind.speed} km/h`;
@@ -73,16 +69,13 @@ function fetchWeatherData(location) {
         const locationInput = document.getElementById('location-input');
         
         locationForm.addEventListener('submit', (event) => {
-            event.preventDefault();
+            event.preventDefault(); 
             const location = locationInput.value;
             if (location) {
-                localStorage.setItem('lastLocation', location);
                 fetchWeatherData(location);
             }
         });
         
-
-        // actualiza la info de los dias siguientes (4)
         const today = new Date();
         const nextDaysData = data.list.slice(1);
 
@@ -94,46 +87,35 @@ function fetchWeatherData(location) {
             const dayAbbreviation = forecastDate.toLocaleDateString('ES', { weekday: 'short' });
             const dayTemp = `${Math.round(dayData.main.temp)}°C`;
             const iconCode = dayData.weather[0].icon;
-        
+
+
             if (!uniqueDays.has(dayAbbreviation) && forecastDate.getDate() !== today.getDate()) {
                 uniqueDays.add(dayAbbreviation);
                 daysList.innerHTML += `
+                
                     <li>
                         <i class='bx bx-${weatherIconMap[iconCode]}'></i>
                         <span>${dayAbbreviation}</span>
                         <span class="day-temp">${dayTemp}</span>
                     </li>
+
                 `;
                 count++;
             }
-        
-            // break después de 4 intentos
+
+
             if (count === 4) break;
         }
-        
+    }).catch(error => {
+        const errorMensaje = document.createElement("div");
+        errorMensaje.textContent = "Ingrese un nombre de ciudad correcto por favor";
+        errorMensaje.style.color = "white";
+        document.body.appendChild(errorMensaje);
+    });
+}
 
-        }).catch(error => {
-            const errorMensaje = document.createElement("div");
-            errorMensaje.textContent = "Algo salio mal";
-            errorMensaje.style.color = "red";
-            document.body.appendChild(errorMensaje);
-        });
-        
-
-// obtiene datos meteorolicos sobre la ubicacion predeterminada (San Luis)
-// dom documents
 document.addEventListener('DOMContentLoaded', () => {
-    const defaultLocation = 'San Luis';
+    const defaultLocation = 'Argentina';
     fetchWeatherData(defaultLocation);
 });
 
-const searchButton = document.getElementById('search-button');
-const locationInput = document.getElementById('location-input');
-
-searchButton.addEventListener('click', () => {
-    const location = locationInput.value;
-    if (!location) return;
-
-    fetchWeatherData(location);
-});
-}
