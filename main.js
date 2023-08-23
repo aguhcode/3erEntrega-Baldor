@@ -28,7 +28,7 @@ function fetchWeatherData(location) {
     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&appid=${apiKey}&units=metric`;
 
     fetch(apiUrl).then(response => response.json()).then(data => {
-        const todayWeather = data.list[0].weather[0].description;
+        const todayWeather = data.list[0].weather[0].description;ES
         const todayTemperature = `${Math.round(data.list[0].main.temp)}°C`;
         const todayWeatherIconCode = data.list[0].weather[0].icon;
 
@@ -112,8 +112,8 @@ function fetchWeatherData(location) {
         Toastify({
             text: "Ingrese un nombre de ciudad correcto por favor",
             duration: 2000,
-            gravity: "top", // Cambia la posición si lo deseas
-            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)", // Cambia los colores si lo deseas
+            gravity: "top", 
+            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)", 
             close: true
         }).showToast();
     });
