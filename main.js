@@ -109,15 +109,15 @@ function fetchWeatherData(location) {
             if (count === 5) break;
         }
     }).catch(error => {
-        const errorMensaje = document.createElement("div");
-        errorMensaje.textContent = "Ingrese un nombre de ciudad correcto por favor";
-        errorMensaje.style.color = "white";
-        document.body.appendChild(errorMensaje);
-    
-        setTimeout(() => {
-            errorMensaje.remove();
-        }, 2000); 
+        Toastify({
+            text: "Ingrese un nombre de ciudad correcto por favor",
+            duration: 2000,
+            gravity: "top", // Cambia la posición si lo deseas
+            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)", // Cambia los colores si lo deseas
+            close: true
+        }).showToast();
     });
+    
     
 }
 
