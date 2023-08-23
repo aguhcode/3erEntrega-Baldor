@@ -106,7 +106,7 @@ function fetchWeatherData(location) {
             }
 
 
-            if (count === 4) break;
+            if (count === 5) break;
         }
     }).catch(error => {
         const errorMensaje = document.createElement("div");
@@ -116,7 +116,7 @@ function fetchWeatherData(location) {
     
         setTimeout(() => {
             errorMensaje.remove();
-        }, 3000); 
+        }, 2000); 
     });
     
 }

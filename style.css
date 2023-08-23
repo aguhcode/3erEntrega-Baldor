@@ -21,21 +21,19 @@ body {
     color: #fff;
     border-radius: 25px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    padding: 15px; 
+    padding: 15px;
 }
 
 .left-info {
-    width: 100%; 
-    display: block; 
-    background: url("/img/2.jpg"); 
+    width: 100%;
+    display: block;
+    background: url("/img/2.jpg");
     background-position: center;
     background-size: cover;
     cursor: pointer;
     box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
-
-
 
 .pic-gradient {
     position: absolute;
@@ -49,68 +47,67 @@ body {
 }
 
 .today-info {
-    position: relative; 
-    margin-top: 15px; 
-    text-align: center; 
+    position: relative;
+    margin-top: 15px;
+    text-align: center;
 }
 
 .today-weather {
-    position: relative; 
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    text-align: center; 
-    margin-top: 15px; 
-    padding-bottom: 15px; 
+    align-items: center;
+    text-align: center;
+    margin-top: 15px;
+    padding-bottom: 15px;
 }
 
 .today-weather .bx {
-    font-size: 3rem; 
+    font-size: 3rem;
 }
 
 .weather-temp {
     font-weight: 700;
-    font-size: 2rem; 
+    font-size: 2rem;
 }
 
 .right-info {
     position: relative;
     height: 100%;
-    padding-top: 15px; 
+    padding-top: 15px;
 }
 
 .day-info {
-    padding: 15px; 
+    padding: 15px;
     display: flex;
     flex-direction: column;
 }
 
 .days-list {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     list-style: none;
-    margin: 10px -5px; 
-    padding: 0; 
+    margin: 10px -5px;
+    padding: 0;
 }
 
 .days-list li {
     padding: 10px;
-    margin: 5px; 
+    margin: 5px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
-    transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
     background: #fff;
     color: #222831;
 }
 
 .days-list li .bx {
-    margin-bottom: 3px; 
-    font-size: 1.5rem; 
+    margin-bottom: 3px;
+    font-size: 1.5rem;
 }
 
 .btn-container {
@@ -123,7 +120,7 @@ body {
     border: none;
     font-weight: 700;
     border-radius: 25px;
-    padding: 8px; 
+    padding: 8px;
     background: #303f9f;
     color: #fff;
     cursor: pointer;
