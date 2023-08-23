@@ -72,6 +72,7 @@ function fetchWeatherData(location) {
             event.preventDefault(); 
             const location = locationInput.value;
             if (location) {
+                localStorage.setItem('lastLocation', location);
                 fetchWeatherData(location);
             }
         });
@@ -104,14 +105,18 @@ function fetchWeatherData(location) {
             }
 
 
-            if (count === 4) break;
+            if (count === 5) break;
         }
     }).catch(error => {
-        const errorMensaje = document.createElement("div");
-        errorMensaje.textContent = "Ingrese un nombre de ciudad correcto por favor";
-        errorMensaje.style.color = "white";
-        document.body.appendChild(errorMensaje);
+        Toastify({
+            text: "Ingrese un nombre de ciudad correcto por favor",
+            duration: 1500,
+            gravity: "top", 
+            backgroundColor: "linear-gradient(to right, #ff416c, #ff4b2b)", 
+            close: true
+        }).showToast();
     });
+    
 }
 
 document.addEventListener('DOMContentLoaded', () => {
