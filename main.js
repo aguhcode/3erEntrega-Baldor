@@ -125,4 +125,3 @@ document.addEventListener('DOMContentLoaded', () => {
     const defaultLocation = 'San Luis';
     fetchWeatherData(defaultLocation);
 });
-
