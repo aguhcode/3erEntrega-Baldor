@@ -76,9 +76,19 @@ function fetchWeatherData(location) {
                 fetchWeatherData(location);
             }
         });
+
         function getLastLocation() {
             return localStorage.getItem('lastLocation');
         }
+        function showLastLocation() {
+            const lastLocation = getLastLocation();
+            if (lastLocation) {
+                locationInput.value = lastLocation;
+                document.getElementById('lastLocation').textContent = lastLocation;
+            }
+        }
+        showLastLocation();
+        
         const today = new Date();
         const nextDaysData = data.list.slice(1);
         const uniqueDays = new Set();
