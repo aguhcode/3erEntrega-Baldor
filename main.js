@@ -79,7 +79,6 @@ function fetchWeatherData(location) {
         
         const today = new Date();
         const nextDaysData = data.list.slice(1);
-
         const uniqueDays = new Set();
         let count = 0;
         daysList.innerHTML = '';
@@ -120,7 +119,7 @@ function fetchWeatherData(location) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const defaultLocation = 'Argentina';
+    const defaultLocation = 'San Luis, AR';
     fetchWeatherData(defaultLocation);
 });
 
