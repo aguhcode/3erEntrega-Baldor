@@ -76,7 +76,9 @@ function fetchWeatherData(location) {
                 fetchWeatherData(location);
             }
         });
-        
+        function getLastLocation() {
+            return localStorage.getItem('lastLocation');
+        }
         const today = new Date();
         const nextDaysData = data.list.slice(1);
         const uniqueDays = new Set();
